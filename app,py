@@ -1,0 +1,11 @@
+from flask import Flask, render_template, redirect
+
+app = Flask(__name__, template_folder='', static_folder='')
+
+#Page_manager
+@app.route("/")
+def main():
+    return render_template('/html/main.html')
+
+#run sity
+app.run(debug=True)
