@@ -4,14 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login page</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='auth.css')}}">
+    <link rel="stylesheet" href="./style/auth.css">
     
-
 </head>
 <body>
-    <header>Login in your acount</header>
-    <main>
+    <header>
+        <h1>Login in your acount</h1>
+    </header>
+    <main class="auth">
+        <form class="form">
+            <div>
+                <label>login</label>
+                <input id="login" type="text" name="login">
+            </div>
+
+            <div>
+                <label>password</label>
+                <input id="password" type="password" name="password">
+            <div> 
+            <button type="input">
+                Login
+            </button>
+        </form>
+        <a href="/html/reg">
+            Register
+        </a>
     </main>
 </body>
 </html>

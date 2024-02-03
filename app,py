@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request, session, url_for
 
 app = Flask(__name__, template_folder='', static_folder='')
 
@@ -6,6 +6,22 @@ app = Flask(__name__, template_folder='', static_folder='')
 @app.route("/")
 def main():
     return render_template('/html/main.html')
+
+@app.route("/auth/login", methods={"GET", "POST"})
+def sing_in():
+    if request.form["login"] == "admin" and request.form["password"] == "admin":
+        return render_template('/html/profile.html')
+    else: 
+        return redirect(url_for('/sing_in'))
+
+@app.route("/auth/reg", methods={"GET", "POST"})
+def sing_up():
+    return render_template('/html/register.html')
+
+@app.route("/profile", methods={"GET", "POST"})
+def profile():
+    if 'user' in session.keys():
+        return render_template('/html/profiler.html')
 
 #run sity
 app.run(debug=True)
