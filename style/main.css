@@ -1,3 +1,73 @@
 h1 {
     font-family: 'Single Day', cursive;
+    color: #EEEEEE;
 }
+
+main{
+    padding: 0px;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+header{
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: #222831;
+    color: #EEEEEE;
+}
+
+a {
+    font-family: "Single Day", cursive;
+    text-decoration: none;
+    color: #EEEEEE;
+    position: relative;
+    left: 550px;
+}
+
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #393E46;
+}
+
+head{
+    padding: 0px;
+    margin: 0px;
+}
+
+textarea {
+    width: 100%;
+    height: 750px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #222831;
+    border-radius: 4px;
+    background-color: #00ADB5;
+    font-size: 16px;
+    font-family: "Single Day", cursive;
+    resize: none;
+}
+
+footer{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.customButton{
+    background-color: #222831;
+    color: #EEEEEE;
+    border-radius: 5px;
+    size: 15px 30px;
+    border-color: #00ADB5;
+
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
