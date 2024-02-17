@@ -18,7 +18,7 @@ h1, label {
 main{
     padding: 20%;
     margin: 20%;
-    border-radius: 25%;
+    border-radius: 60%;
     display: center;
     justify-content: center;
     align-content: center;
@@ -58,10 +58,13 @@ a {
     border-color: #222831;
     background-color: #393E46;
     color: #EEEEEE;
-    position: relative;
-    left: 30%;
 }
 
 button{
     font-family: "Single Day", cursive;
+}
+
+.reg {
+    position:relative;
+    left: 180px;
 }
