@@ -26,6 +26,31 @@ def sing_up():
 def profile():
     if session['logged_in'] == True:
         return render_template('/html/profile.html')
+    
+@app.route("/pj1", methods={"GET", "POST"})
+def pj1():
+    if session['id'] >0:
+        return render_template('/html/pj1.html')
+    
+@app.route("/pj2", methods={"GET", "POST"})
+def pj2():
+    if session['id'] >0:
+        return render_template('/html/pj2.html')
+    
+@app.route("/pj3", methods={"GET", "POST"})
+def pj3():
+    if session['id'] >0:
+        return render_template('/html/pj3.html')
+    
+@app.route("/pj4", methods={"GET", "POST"})
+def pj4():
+    if session['id'] >0:
+        return render_template('/html/pj4.html')
+    
+@app.route("/pj5", methods={"GET", "POST"})
+def pj5():
+    if session['id'] >0:
+        return render_template('/html/pj5.html')    
 
 #run sity
 app.secret_key = "I never lose"

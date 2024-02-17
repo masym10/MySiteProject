@@ -1,4 +1,4 @@
-h1 {
+h1, p{
     font-family: 'Single Day', cursive;
     color: #EEEEEE;
 }
@@ -6,8 +6,6 @@ h1 {
 main{
     padding: 0px;
     margin: 0px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
 }
 
 header{
@@ -18,14 +16,6 @@ header{
     align-content: center;
     background-color: #222831;
     color: #EEEEEE;
-}
-
-a {
-    font-family: "Single Day", cursive;
-    text-decoration: none;
-    color: #EEEEEE;
-    position: relative;
-    left: 550px;
 }
 
 body{
@@ -45,24 +35,11 @@ footer{
     padding: 0px;
 }
 
-.customButton{
-    background-color: #222831;
-    color: #EEEEEE;
-    border-radius: 5px;
-    size: 15px 30px;
-    border-color: #00ADB5;
-
-}
-
-.button:hover{
-    cursor: pointer;
-}
-
 .mytheme{
-    padding: 0px;
-    margin: 0px;
+    padding: 10px;
+    margin: 5px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .centertxt {
