@@ -16,9 +16,9 @@ h1, label {
 
 
 main{
-    padding: 20%;
-    margin: 20%;
-    border-radius: 60%;
+    padding: 50px;
+    margin: 20px;
+    border-radius:78px 78px 78px 78px;
     display: center;
     justify-content: center;
     align-content: center;
@@ -53,10 +53,10 @@ footer{
 a {
     font-family: "Single Day", cursive;
     text-decoration: none;
-    padding: 1.5%;
+    padding: 8px 16px;
     border-radius: 15%;
     border-color: #222831;
-    background-color: #393E46;
+    background-color: #007c82;
     color: #EEEEEE;
 }
 
@@ -68,3 +68,19 @@ button{
     position:relative;
     left: 180px;
 }
+
+a:link {
+    color: #EEEEEE;
+  }
+  
+a:visited {
+    color: #eeeeee52;
+  }
+  
+a:hover {
+    color: #eeeeeeb0;
+  }
+  
+a:active {
+    color: #eeeeee3b;
+  }

@@ -1,0 +1,39 @@
+h1, p{
+    font-family: 'Single Day', cursive;
+    color: #EEEEEE;
+}
+
+main{
+    padding: 0px;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #00ADB5;
+}
+
+header{
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: #222831;
+    color: #EEEEEE;
+}
+
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #393E46;
+}
+
+head{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+footer{
+    margin: 0px;
+    padding: 0px;
+}

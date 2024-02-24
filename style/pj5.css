@@ -6,6 +6,7 @@ h1, p{
 main{
     padding: 0px;
     margin: 0px;
+    background-color: #00ADB5;
 }
 
 header{
@@ -37,11 +38,10 @@ footer{
 
 
 .mytheme{
-    padding: 10px;
+    padding: 5px;
     margin: 5px;
-    display: flex;
-    justify-content: center;
-    align-content: center;;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .centertxt {
@@ -49,3 +49,30 @@ footer{
     justify-content: center;
     align-content: center;
 }
+
+a {
+    font-family: 'Single Day', cursive;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 8px 16px;
+    background-color: #007c82;
+    border-radius: 8px;
+    position: relative;
+    top: 20px;
+}
+
+a:link {
+    color: #EEEEEE;
+  }
+  
+a:visited {
+    color: #eeeeee52;
+  }
+  
+a:hover {
+    color: #eeeeeeb0;
+  }
+  
+a:active {
+    color: #eeeeee3b;
+  }

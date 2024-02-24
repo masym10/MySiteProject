@@ -1,5 +1,4 @@
 from flask import Flask, render_template, redirect, request, session, url_for
-from db import add_about
 
 app = Flask(__name__, template_folder='', static_folder='')
 
@@ -26,13 +25,12 @@ def sing_in():
 
 @app.route("/reg", methods={"GET", "POST"})
 def sing_up():
-    if session['id'] >0:
+    if session['id'] > 0:
         return render_template('/html/register.html')
 
 @app.route("/profile", methods={"GET", "POST"})
 def profile():
     if session['logged_in'] == True:
-        add_about()
         return render_template('/html/profile.html')
     
 @app.route("/pj1", methods={"GET", "POST"})

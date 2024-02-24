@@ -1,4 +1,4 @@
-h1 {
+h1, p{
     font-family: 'Single Day', cursive;
     color: #EEEEEE;
 }
@@ -7,7 +7,8 @@ main{
     padding: 0px;
     margin: 0px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #00ADB5;
 }
 
 header{
@@ -20,12 +21,13 @@ header{
     color: #EEEEEE;
 }
 
-a {
+.login {
     font-family: "Single Day", cursive;
     text-decoration: none;
     color: #EEEEEE;
     position: relative;
-    left: 550px;
+    left: 250px;
+    top: 50px;
 }
 
 body{
@@ -44,6 +46,17 @@ footer{
     margin: 0px;
     padding: 0px;
 }
+
+ul {
+    list-style-type: circle;
+    background-color: #00acb5c2;
+}
+
+li {
+    margin: 10px;
+}
+
+
 
 .customButton{
     background-color: #222831;
@@ -70,3 +83,35 @@ footer{
     justify-content: center;
     align-content: center;
 }
+
+.MyProject {
+    font-family: "Single Day", cursive;
+    text-decoration: none;
+    color: #EEEEEE;
+    border: 5px;
+    border-color: #222831;
+    display: grid;
+    grid-column: 1fr;
+}
+
+.column {
+    position: relative;
+    left: 50px;
+}
+
+a:link {
+    color: #EEEEEE;
+  }
+  
+a:visited {
+    color: #eeeeee52;
+  }
+  
+a:hover {
+    color: #eeeeeeb0;
+    cursor: pointer;
+  }
+  
+a:active {
+    color: #eeeeee3b;
+  }

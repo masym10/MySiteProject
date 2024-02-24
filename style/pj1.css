@@ -6,6 +6,9 @@ h1, p{
 main{
     padding: 0px;
     margin: 0px;
+    background-color: #00ADB5;
+    display: grid;
+    grid-column: repeat(2, 1fr);
 }
 
 header{
@@ -35,14 +38,6 @@ footer{
     padding: 0px;
 }
 
-
-.imgP {
-    display: grid;
-    grid-column: repeat(2 1fr);
-    border: none;
-    
-}
-
 .txt {
     color:#EEEEEE;
     font-family: "Single Day", cursive;
@@ -67,8 +62,44 @@ a {
     font-family: "Single Day", cursive;
     text-decoration: none;
 }
-
+a:link {
+    color: #EEEEEE;
+  }
+  
+  a:visited {
+    color: #EEEEEE;
+  }
+  
+  a:hover {
+    color: #eeeeeeb0;
+    cursor: pointer;
+  }
+  
+  a:active {
+    color: #eeeeee3b;
+  }
 .aposition {
-    display: flex;
-    justify-content: end;
+    position: relative;
+    left: 300;
+}
+
+.mytheme{
+    padding: 5px;
+    margin: 5px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.imgcustm{
+    padding: 5px;
+}
+
+.ButtonLink {
+    border: 20px;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #007c82;
+    position: relative;
+    left: 5px;
+    top: 22%;
 }
