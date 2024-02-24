@@ -79,6 +79,12 @@ def add_pj(title, about, image, user_id):
     conn.commit()
     close()
 
+def add_user(login, password):
+    open()
+    cursor.execute('''INSERT INTO users (login, password) VALUES (?, ?)''', [login, password])
+    conn.commit()
+    close()
+
 drop_table()
 
 create_tables()

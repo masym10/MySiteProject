@@ -37,3 +37,10 @@ footer{
     margin: 0px;
     padding: 0px;
 }
+
+button {
+    background-color: #007c82;
+    border-radius: 5px;
+    color: #EEEEEE;
+    font-family: "Single Day", cursive;
+}

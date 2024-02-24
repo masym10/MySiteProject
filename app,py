@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, request, session, url_for
+from db import add_pj, add_user
 
 app = Flask(__name__, template_folder='', static_folder='')
 
@@ -25,12 +26,28 @@ def sing_in():
 
 @app.route("/reg", methods={"GET", "POST"})
 def sing_up():
-    if session['id'] > 0:
+    if session['id'] > 0 and request.method == "GET":
+        login = request.form.get('login')
+        password = request.form.get('password')
+        
+        add_user(login=login, password=password)
+        return redirect(url_for("sing_in"))
+    
+    elif session['id'] >0 and request.method == "POST":
+
         return render_template('/html/register.html')
 
 @app.route("/profile", methods={"GET", "POST"})
 def profile():
-    if session['logged_in'] == True:
+    if session['logged_in'] == True and request.method == "POST":
+        title = request.form.get("title")
+        about = request.form.get("about")
+        img = request.form.get("img")
+        user_id = request.form.get("user_id")
+        add_pj(title=title, about=about, image= img, user_id= user_id)
+        return redirect(url_for('main'))
+
+    elif session['logged_in'] == True and request.method == "GET":
         return render_template('/html/profile.html')
     
 @app.route("/pj1", methods={"GET", "POST"})

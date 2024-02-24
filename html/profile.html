@@ -18,6 +18,42 @@
     </header>
     <main>
         <div>
+            <form method="post" action="/profile">
+                <div>
+                    <label>Title:</label>
+                    <input type="text" name="title">
+                </div>
+                <div>
+                    <label>About:</label>
+                    <input type="text" name="about">
+                </div>
+
+                <div>
+                    <label>Image:</label>
+                    <input type="text" name="img">                    
+                </div>
+                <div>
+                    <label>user_id:</label>
+                    <input type="text" name="user_id">                    
+                </div>
+                <button type="submit">add new pj</button>
+            </form>
+            <div>
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>Login</th>
+                        <th>Password</th>
+                    </tr>
+                    <tr>
+                        <td>{{user_id}}</td>
+                        <td>{{login}}</td>
+                        <td>{{password}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div>
             <a href="/">home</a>
         </div>
     </main>
