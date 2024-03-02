@@ -3,7 +3,7 @@ from db import add_pj, add_user, get_all_logins, get_all_passwords, get_all_user
 
 app = Flask(__name__, template_folder='', static_folder='')
 
-#Page_manager
+#Page_managed
 @app.route('/')
 def main():
     session['id'] = 1
@@ -12,16 +12,16 @@ def main():
 
 @app.route("/login", methods={"GET", "POST"})
 def sing_in():
-    msg = ""
-    if session['id'] != 0 and request.method == 'POST':
-        session['logged_in'] = True
+    if request.method == 'POST':
+       
         login = request.form.get('login')
         password = request.form.get('password')
-        login = str(login)
 
         data = get_all_users()
-        for i in range(len(data)):
-            if login == data[i] and password == data[i]:
+        print(data)
+
+        for i in data:
+            if login == i[0] and password == i[1]:
                 user_name = login
                 return redirect(url_for('profile', name=user_name))
             
@@ -33,19 +33,24 @@ def sing_in():
 
 @app.route("/reg", methods={"GET", "POST"})
 def sing_up():
-    if session['id'] != 0 and request.method == "POST":
+    if request.method == "POST":
         login = request.form.get('login')
-        password = request.form.get('password')
-        data = get_all_users
-        for i in range(len(data)):
-            if login != data[i] and  password != data[i]:
-                add_user(login=login, password=password)
+        password = request.form.get('password')        
+        data1 = get_all_logins()
+        for i in data1:
+            if login != i[0]:
+                add_user(login, password)
+                return redirect(url_for("sing_in"))
 
-        return redirect(url_for("sing_in"))
+            else: 
+                mg = "This login is used"
+                return render_template("/html/reg.html", mg)
+        
+        
     
     elif session['id'] != 0 and request.method == "GET":
 
-        return render_template('/html/register.html')
+        return render_template('html/reg.html')
 
 @app.route("/profile", methods={"GET", "POST"})
 def profile():
@@ -59,6 +64,9 @@ def profile():
 
     elif session['logged_in'] == True and request.method == "GET":
         return render_template('/html/profile.html')
+    
+    else:
+        return redirect('home')
     
 @app.route("/pj1", methods={"GET", "POST"})
 def pj1():

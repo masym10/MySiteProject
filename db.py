@@ -126,4 +126,3 @@ def get_all_img():
    
 show_table()
 print(get_all_users())
-

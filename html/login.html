@@ -26,14 +26,18 @@
                 <label>Password</label>
                 <input  type="password" name="password" id="password">
             <div> 
-            <button type="submit" value="submit">
+            <button type="submit" value="submit" class="button-53">
                 Submit
             </button>
         </form>
     <div class="reg">
         <a href="/reg">Register</a>
     </div>
-    <p>{{mg}}</p>
+    {% if mg != None %}
+    <div>
+        <p>{{ mg }}</p>
+    </div>
+    {% endif %}
     </main>
 </body>
 </html>
