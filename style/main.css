@@ -75,7 +75,26 @@ li {
     padding: 0px;
     margin: 0px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.mytheme1 {
+    padding: 10px;
+    margin: 5px;
+    display: center;
+    align-content: center;
+    content: center;
+    position: relative;
+    left: 100%
+}
+
+.mytheme2 {
+    padding: 10px;
+    margin: 5px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    right: 10%
 }
 
 .centertxt {
@@ -115,3 +134,4 @@ a:hover {
 a:active {
     color: #eeeeee3b;
   }
+

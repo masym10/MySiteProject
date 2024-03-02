@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, request, session, url_for
-from db import add_pj, add_user
+from db import add_pj, add_user, get_all_logins, get_all_passwords, get_all_users, get_all_title, get_all_about, get_all_img
 
 app = Flask(__name__, template_folder='', static_folder='')
 
@@ -7,33 +7,43 @@ app = Flask(__name__, template_folder='', static_folder='')
 @app.route('/')
 def main():
     session['id'] = 1
+    session['id'] += 1 
     return render_template('/html/main.html')
 
 @app.route("/login", methods={"GET", "POST"})
 def sing_in():
-    if session['id'] >= 0 and request.method == 'POST':
+    msg = ""
+    if session['id'] != 0 and request.method == 'POST':
         session['logged_in'] = True
         login = request.form.get('login')
         password = request.form.get('password')
+        login = str(login)
 
-        if login == 'admin' and password == 'admin':
-            return redirect(url_for('profile'))
-        
+        data = get_all_users()
+        for i in range(len(data)):
+            if login == data[i] and password == data[i]:
+                user_name = login
+                return redirect(url_for('profile', name=user_name))
+            
         else:
-           return redirect(url_for('sing_in'))
+           mgs = "Login or password is incorrect"
+           return redirect(url_for('sing_in', mg=mgs))
     else:
         return render_template('/html/login.html')
 
 @app.route("/reg", methods={"GET", "POST"})
 def sing_up():
-    if session['id'] > 0 and request.method == "GET":
+    if session['id'] != 0 and request.method == "POST":
         login = request.form.get('login')
         password = request.form.get('password')
-        
-        add_user(login=login, password=password)
+        data = get_all_users
+        for i in range(len(data)):
+            if login != data[i] and  password != data[i]:
+                add_user(login=login, password=password)
+
         return redirect(url_for("sing_in"))
     
-    elif session['id'] >0 and request.method == "POST":
+    elif session['id'] != 0 and request.method == "GET":
 
         return render_template('/html/register.html')
 
@@ -52,27 +62,27 @@ def profile():
     
 @app.route("/pj1", methods={"GET", "POST"})
 def pj1():
-    if session['id'] >0:
+    if session['id'] !=0:
         return render_template('/html/pj1.html')
     
 @app.route("/pj2", methods={"GET", "POST"})
 def pj2():
-    if session['id'] >0:
+    if session['id'] !=0:
         return render_template('/html/pj2.html')
     
 @app.route("/pj3", methods={"GET", "POST"})
 def pj3():
-    if session['id'] >0:
+    if session['id'] !=0:
         return render_template('/html/pj3.html')
     
 @app.route("/pj4", methods={"GET", "POST"})
 def pj4():
-    if session['id'] >0:
+    if session['id'] !=0:
         return render_template('/html/pj4.html')
     
 @app.route("/pj5", methods={"GET", "POST"})
 def pj5():
-    if session['id'] >0:
+    if session['id'] !=0:
         return render_template('/html/pj5.html')    
 
 #run sity

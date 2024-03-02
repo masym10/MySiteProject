@@ -25,7 +25,8 @@ def create_tables():
     do('''CREATE TABLE IF NOT EXISTS users (
        id INTEGER PRIMARY KEY,
        login VARCHAR,
-       password VARCHAR)
+       password VARCHAR,
+       admin_access VARCHAR)
     ''')
     
     do('''CREATE TABLE IF NOT EXISTS pjs (
@@ -46,9 +47,9 @@ def drop_table():
     do('DROP TABLE IF EXISTS users')
     close()
 
-def insert_test_data():
+def add_admin():
     open()
-    cursor.execute('''INSERT INTO users (login, password) VALUES (?,?)''', ['admin', 'admin'])
+    cursor.execute('''INSERT INTO users (login, password, admin_access) VALUES (?, ?, ?)''', ['admin', 'admin', 'True'])
     conn.commit()
     close()
 
@@ -60,6 +61,21 @@ def show_table():
     cursor.execute('''SELECT * FROM pjs''')
     print(cursor.fetchall())
     close()
+
+def get_all_users():
+    open()
+    cursor.execute('''SELECT users.login, users.password FROM users''')
+    return cursor.fetchall()
+
+def get_all_logins():
+    open()
+    cursor.execute('''SELECT users.login FROM users''')
+    return cursor.fetchall()
+
+def get_all_passwords():
+    open()
+    cursor.execute('''SELECT users.password FROM users''')
+    return cursor.fetchall()
 
 def get_all_pjs():
     open()
@@ -80,20 +96,34 @@ def add_pj(title, about, image, user_id):
     close()
 
 def add_user(login, password):
+    admin_access = 'False'
     open()
-    cursor.execute('''INSERT INTO users (login, password) VALUES (?, ?)''', [login, password])
+    cursor.execute('''INSERT INTO users (login, password, admin_access) VALUES (?, ?, ?)''', [login, password, admin_access])
     conn.commit()
     close()
 
-drop_table()
+def get_all_title():
+    open()
+    cursor.execute('''SELECT pjs.title INTO pjs''')
+    conn.commit()
+    close()
 
-create_tables()
+def get_all_about():
+    open()
+    cursor.execute('''SELECT pjs.about INTO pjs''')
+    conn.commit()
+    close()
 
-insert_test_data()
+def get_all_img():
+    open()
+    cursor.execute('''SELECT pjs.img INTO pjs''')
+    conn.commit()
+    close()
 
+#drop_table()
+
+#create_tables()
+   
 show_table()
+print(get_all_users())
 
-add_pj('Python_first_project', 'This is my start in python devolpend', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/640px-Python.svg.png', 1)
-
-pj = get_all_pjs()
-print(pj)
