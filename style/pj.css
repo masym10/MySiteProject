@@ -1,0 +1,105 @@
+h1, p, h3{
+    font-family: 'Single Day', cursive;
+    color: #EEEEEE;
+}
+
+main{
+    padding: 0px;
+    margin: 0px;
+    background-color: #00ADB5;
+    display: grid;
+    grid-column: repeat(2, 1fr);
+}
+
+header{
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: #222831;
+    color: #EEEEEE;
+}
+
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #393E46;
+}
+
+head{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+footer{
+    margin: 0px;
+    padding: 0px;
+}
+
+.txt {
+    color:#EEEEEE;
+    font-family: "Single Day", cursive;
+    display: flex;
+}
+
+.mytheme{
+    padding: 5px;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.centertxt {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+a {
+    color: #EEEEEE;
+    font-family: "Single Day", cursive;
+    text-decoration: none;
+}
+a:link {
+    color: #EEEEEE;
+  }
+  
+  a:visited {
+    color: #EEEEEE;
+  }
+  
+  a:hover {
+    color: #eeeeeeb0;
+    cursor: pointer;
+  }
+  
+  a:active {
+    color: #eeeeee3b;
+  }
+.aposition {
+    position: relative;
+    left: 300;
+}
+
+.mytheme{
+    padding: 5px;
+    margin: 5px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.imgcustm{
+    padding: 5px;
+}
+
+.ButtonLink {
+    border: 20px;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #007c82;
+    position: relative;
+    left: 5px;
+    top: 22%;
+}

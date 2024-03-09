@@ -85,8 +85,8 @@ def get_all_pjs():
 
 def get_pj_by_id(id):
     open()
-    cursor.execute('''SELECT pjs.title, pjs.about, users.login
-                   FROM pjs INNER JOIN users ON pjs.author_id == users.id WHERE pjs.id == (?)''', [id])
+    cursor.execute('''SELECT pjs.title, pjs.about, pjs.img, users.login
+                   FROM pjs INNER JOIN users ON pjs.user_id == users.id WHERE pjs.id == (?)''', [id])
     return cursor.fetchall()
     
 def add_pj(title, about, image, user_id):
@@ -102,6 +102,12 @@ def add_user(login, password):
     conn.commit()
     close()
 
+def delete_pj_by_id(id):
+    open()
+    cursor.execute('''DELETE FROM pjs WHERE pjs.id == (?)''', [id])
+    conn.commit()
+    close()
+
 def get_all_title():
     open()
     cursor.execute('''SELECT pjs.id, pjs.title FROM pjs''')
@@ -110,34 +116,12 @@ def get_all_title():
     close()
     return titles
 
-def get_all_about():
-    open()
-    cursor.execute('''SELECT pjs.about FROM pjs''')
-    conn.commit()
-    abouts = cursor.fetchall()
-    close()
-    return abouts
-
-def get_all_img():
-    open()
-    cursor.execute('''SELECT pjs.img FROM pjs''')
-    conn.commit()
-    imgs = cursor.fetchall()
-    close()
-    return imgs
-
-def get_admin_access():
-    open()
-    cursor.execute('''SELECT users.admin_access FROM users''')
-    conn.commit()
-    admin_access = cursor.fetchone()
-    close()
-    return admin_access
-
 #drop_table()
 
 #create_tables()
    
 show_table()
-print(get_all_users())
-print(get_all_title())
+
+data = get_all_title()
+
+print(data)

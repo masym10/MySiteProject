@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1 page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='pj.css')}}">
+    <link rel="stylesheet" href="./style/pj.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <header>
+        {% for i in pjs %}
+        <h1 class="center-content">{{i[0]}}</h1>
+        {% endfor %}
+    </header>
+    <main>
+            <div class="mytheme">
+                <div>
+                    {{showed_pj}}
+                    <a href="/" class="ButtonLink">home</a>
+                </div>
+                <div class="mytheme">
+                    {%for i in images%}
+                
+                    <img src="/image/{{i}}" height="190" width="300" class="imgcustm">
+                    {%endfor%}
+                </div>
+            </div>   
+              
+    </main>
+</body>
+</html>
