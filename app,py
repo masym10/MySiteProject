@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, request, session, url_for
-from db import add_pj, add_user, get_all_logins, get_all_passwords, get_all_users, get_all_title, get_all_about, get_all_img
+from db import add_pj, add_user, get_all_logins, get_all_passwords, get_all_users, get_all_title, get_all_about, get_all_img, get_all_pjs
 
 app = Flask(__name__, template_folder='', static_folder='')
 
@@ -8,7 +8,8 @@ app = Flask(__name__, template_folder='', static_folder='')
 def main():
     session['id'] = 1
     session['id'] += 1 
-    return render_template('/html/main.html')
+    titles = get_all_title()
+    return render_template('/html/main.html', titles=titles)
 
 @app.route("/login", methods={"GET", "POST"})
 def sing_in():
@@ -23,8 +24,9 @@ def sing_in():
         for i in data:
             if login == i[0] and password == i[1]:
                 user_name = login
+
                 return redirect(url_for('profile', name=user_name))
-            
+
         else:
            mgs = "Login or password is incorrect"
            return redirect(url_for('sing_in', mg=mgs))
@@ -46,8 +48,6 @@ def sing_up():
                 mg = "This login is used"
                 return render_template("/html/reg.html", mg)
         
-        
-    
     elif session['id'] != 0 and request.method == "GET":
 
         return render_template('html/reg.html')
@@ -71,7 +71,9 @@ def profile():
 @app.route("/pj1", methods={"GET", "POST"})
 def pj1():
     if session['id'] !=0:
-        return render_template('/html/pj1.html')
+        pjs = get_all_pjs()
+        titles = get_all_title()
+        return render_template('/html/pj1.html', pjs=pjs, title=titles)
     
 @app.route("/pj2", methods={"GET", "POST"})
 def pj2():

@@ -104,21 +104,35 @@ def add_user(login, password):
 
 def get_all_title():
     open()
-    cursor.execute('''SELECT pjs.title INTO pjs''')
+    cursor.execute('''SELECT pjs.id, pjs.title FROM pjs''')
     conn.commit()
+    titles = cursor.fetchall()
     close()
+    return titles
 
 def get_all_about():
     open()
-    cursor.execute('''SELECT pjs.about INTO pjs''')
+    cursor.execute('''SELECT pjs.about FROM pjs''')
     conn.commit()
+    abouts = cursor.fetchall()
     close()
+    return abouts
 
 def get_all_img():
     open()
-    cursor.execute('''SELECT pjs.img INTO pjs''')
+    cursor.execute('''SELECT pjs.img FROM pjs''')
     conn.commit()
+    imgs = cursor.fetchall()
     close()
+    return imgs
+
+def get_admin_access():
+    open()
+    cursor.execute('''SELECT users.admin_access FROM users''')
+    conn.commit()
+    admin_access = cursor.fetchone()
+    close()
+    return admin_access
 
 #drop_table()
 
@@ -126,3 +140,4 @@ def get_all_img():
    
 show_table()
 print(get_all_users())
+print(get_all_title())
