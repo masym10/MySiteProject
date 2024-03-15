@@ -5,7 +5,8 @@ h1, p{
 
 main{
     padding: 0px;
-    margin: 0px;
+    margin: 1%;
+    border-radius: 14% 7% 14% 7%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     background-color: #00ADB5;

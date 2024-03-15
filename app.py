@@ -11,12 +11,10 @@ def main():
     titles = get_all_title()
     return render_template('/html/main.html', titles=titles)
 
-
-
 @app.route("/login", methods={"GET", "POST"})
 def sing_in():
     if request.method == 'POST':
-       
+
         login = request.form.get('login')
         password = request.form.get('password')
 
@@ -29,9 +27,9 @@ def sing_in():
                 session['logged_in'] = True
                 return redirect(url_for('profile', name=user_name))
 
-        else:
-           mgs = "Login or password is incorrect"
-           return redirect(url_for('sing_in', mg=mgs))
+            else:
+                mgs = "Login or password is incorrect"
+                return redirect(url_for('sing_in', mg=mgs))
     else:
         return render_template('/html/login.html')
 
@@ -66,7 +64,7 @@ def profile():
         return redirect(url_for('main'))
 
     elif session['logged_in'] == True and request.method == "GET":
-        return render_template('/html/profile.html', pjs=pj[0])
+        return render_template('/html/profile.html', pjs=pj)
     
     else:
         return redirect('home')

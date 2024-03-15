@@ -18,7 +18,7 @@ h1, label {
 main{
     padding: 50px;
     margin: 20px;
-    border-radius:78px 78px 78px 78px;
+    border-radius: 14% 7% 14% 7%;
     display: center;
     justify-content: center;
     align-content: center;
@@ -92,7 +92,7 @@ a:active {
     background-color: #3DD1E7;
     border: 0 solid #E5E7EB;
     box-sizing: border-box;
-    color: #000000;
+    color: #EEEEEE;
     display: flex;
     font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     font-size: 1rem;

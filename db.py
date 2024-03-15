@@ -122,6 +122,6 @@ def get_all_title():
    
 show_table()
 
-data = get_all_title()
+#data = get_all_pjs()
 
-print(data)
+#print(data)

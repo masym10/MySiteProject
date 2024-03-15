@@ -6,7 +6,6 @@
     <title>Profile page</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style/profile.css')}}">
     <link rel="stylesheet" href="./style/profile.css">
-    <link rel="stylesheet" href="./style/pj5.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
@@ -15,29 +14,30 @@
 <body>
     <header> 
         <h1>Your profile</h1>
+        <a href="/">home</a>
     </header>
     <main>
-        <div>
+        <div class="position">
             <h5>{{name}}</h5>
             <form method="post" action="/profile">
                 <div>
                     <label>Title:</label>
-                    <input type="text" name="title">
+                    <input type="text" name="title" class="txt">
                 </div>
                 <div>
                     <label>About:</label>
-                    <input type="text" name="about">
+                    <input type="text" name="about" class="txt">
                 </div>
 
                 <div>
                     <label>Image:</label>
-                    <input type="text" name="img">                    
+                    <input type="text" name="img" class="txt">                    
                 </div>
                 <div>
                     <label>user_id:</label>
-                    <input type="text" name="user_id">                    
+                    <input type="text" name="user_id" class="txt">                    
                 </div>
-                <button type="submit">add new pj</button>
+                <button type="submit" class="button-54">add new pj</button>
             </form>
             <div>
                 <table>
@@ -47,19 +47,20 @@
                         <th>about</th>
                         <th>img</th>
                         <th>user_id</th>
+                        <th>DellBT</th>
                     </tr>
+                    {% for i in pjs %}
                     <tr>
-                        <td>{{pjs[0]}}</td>
-                        <td>{{pjs[1]}}</td>
-                        <td>{{pjs[2]}}</td>
-                        <td>{{pjs[3]}}</td>
-                        <td>{{pjs[4]}}</td>
+                        <td>{{i[0]}}</td>
+                        <td>{{i[1]}}</td>
+                        <td>{{i[2]}}</td>
+                        <td>{{i[3]}}</td>
+                        <td>{{i[4]}}</td>
+                        <td><button type="submit" class="button-54"><img src="/image/trash.svg" width="50" height="50"></button></td>
                     </tr>
+                    {% endfor %}
                 </table>
             </div>
-        </div>
-        <div>
-            <a href="/">home</a>
         </div>
     </main>
 </body>
