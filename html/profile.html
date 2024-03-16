@@ -15,6 +15,9 @@
     <header> 
         <h1>Your profile</h1>
         <a href="/">home</a>
+        <form method="post" action="/log_out">
+            <button name="Log_out" class="BtLogOut">Log out</button>
+        </form>
     </header>
     <main>
         <div class="position">
@@ -46,7 +49,7 @@
                         <th>title</th>
                         <th>about</th>
                         <th>img</th>
-                        <th>user_id</th>
+                        <th>user</th>
                         <th>DellBT</th>
                     </tr>
                     {% for i in pjs %}
@@ -56,7 +59,12 @@
                         <td>{{i[2]}}</td>
                         <td>{{i[3]}}</td>
                         <td>{{i[4]}}</td>
-                        <td><button type="submit" class="button-54"><img src="/image/trash.svg" width="50" height="50"></button></td>
+                        <td>
+                            <form method="post" action="dell">
+                                <button type="submit" class="button-54" name="DellBT"><img src="/image/trash.svg" width="50" height="50"></button>
+                                <input type="hidden" name="id" value="{{i[0]}}"/>
+                            </form>    
+                        </td>
                     </tr>
                     {% endfor %}
                 </table>

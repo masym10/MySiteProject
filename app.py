@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, request, session, url_for
-from db import add_pj, add_user, get_all_logins, get_all_passwords, get_all_users, get_pj_by_id, get_all_title, get_all_pjs
+from db import add_pj, add_user, get_all_logins, get_all_passwords, get_all_users, get_pj_by_id, get_all_title, get_all_pjs, delete_pj_by_id
 
 app = Flask(__name__, template_folder='', static_folder='')
 
@@ -7,13 +7,23 @@ app = Flask(__name__, template_folder='', static_folder='')
 @app.route('/')
 def main():
     session['id'] = 1
-    session['id'] += 1 
+    session['id'] += 1
     titles = get_all_title()
-    return render_template('/html/main.html', titles=titles)
+    title_a = 'Login'
+    if session['logged_in'] == True:
+        title_a = 'Profile'
+
+    else:
+        title_a = 'Login'
+    return render_template('/html/main.html', titles=titles, title_a=title_a)
 
 @app.route("/login", methods={"GET", "POST"})
 def sing_in():
+    if session['logged_in'] == True:
+            return redirect(url_for('profile'))
+    
     if request.method == 'POST':
+
 
         login = request.form.get('login')
         password = request.form.get('password')
@@ -25,6 +35,7 @@ def sing_in():
             if login == i[0] and password == i[1]:
                 user_name = login
                 session['logged_in'] = True
+                session['login_out'] = False
                 return redirect(url_for('profile', name=user_name))
 
             else:
@@ -55,18 +66,19 @@ def sing_up():
 @app.route("/profile", methods={"GET", "POST"})
 def profile():
     pj = get_all_pjs()
+    print(session["logged_in"])
     if session['logged_in'] == True and request.method == "POST":
         title = request.form.get("title")
         about = request.form.get("about")
         img = request.form.get("img")
         user_id = request.form.get("user_id")
         add_pj(title=title, about=about, image= img, user_id= user_id)
-        return redirect(url_for('main'))
+        return redirect(url_for("profile"))
 
     elif session['logged_in'] == True and request.method == "GET":
         return render_template('/html/profile.html', pjs=pj)
     
-    else:
+    elif session['log_out'] == True:
         return redirect('home')
 
 @app.route('/<id>')
@@ -76,7 +88,19 @@ def pj(id):
         return render_template('/html/pj.html', showed_pj=pj, images=pj[0][2].split(','))
     
     return redirect('/')
-    
+
+@app.route('/dell', methods=["POST"])
+def dell():
+    id = request.form.get('id')
+    delete_pj_by_id(id)
+    return redirect(url_for('profile'))
+
+@app.route('/log_out', methods=["POST"])
+def log_out():
+    session['logged_in'] = False
+    session['log_out'] = True
+    return redirect(url_for('main'))
+
 #run sity
 app.secret_key = "I never lose"
 

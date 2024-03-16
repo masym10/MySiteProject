@@ -151,3 +151,12 @@ label{
     padding: 0.25em 0.75em;
   }
 }
+
+.BtLogOut{
+  border-radius: 5px;
+  padding: 4px 8px;
+  margin: 4px 4px;
+  background-color: #007c82;
+  position: relative;
+  left: 70px;
+}
