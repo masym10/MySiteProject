@@ -11,6 +11,7 @@ def main():
     session['title_a'] = 'Login'
     titles = get_all_title()
     try:
+        print(session['title_antificate'])
         if session['title_antificate'] == True:
             session['title_a'] = 'Login'
         else:
@@ -21,6 +22,11 @@ def main():
 
 @app.route("/login", methods={"GET", "POST"})
 def sing_in():
+    try:
+        if session['logged_in'] == True:
+            return redirect(url_for('profile'))
+    except:
+        pass
 
     if request.method == 'POST':
 
@@ -28,7 +34,7 @@ def sing_in():
         password = request.form.get('password')
 
         data = get_all_users()
-
+        
         for i in data:
             if login == i[0] and password == i[1]:
                 user_name = login
@@ -36,12 +42,11 @@ def sing_in():
                 session['login_out'] = False
                 session['title_antificate'] = False
                 return redirect(url_for('profile', name=user_name))
-
             else:
                 mgs = "Login or password is incorrect"
                 return redirect(url_for('sing_in', mg=mgs))
-    else:
-        return render_template('/html/login.html')
+    
+    return render_template('/html/login.html')
 
 @app.route("/reg", methods={"GET", "POST"})
 def sing_up():
@@ -96,9 +101,10 @@ def dell():
 
 @app.route('/log_out', methods=["POST"])
 def log_out():
-    session['logged_in'] = False
-    session['log_out'] = True
-    session['title_antificate'] == True
+    if request.method == 'POST':
+        session['logged_in'] = False
+        session['log_out'] = True
+        session['title_antificate'] = True
     return redirect(url_for('main'))
 
 #run sity
