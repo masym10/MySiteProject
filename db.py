@@ -120,7 +120,7 @@ def get_all_title():
 
 #create_tables()
    
-show_table()
+#show_table()
 
 #data = get_all_pjs()
 

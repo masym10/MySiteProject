@@ -8,34 +8,33 @@ app = Flask(__name__, template_folder='', static_folder='')
 def main():
     session['id'] = 1
     session['id'] += 1
+    session['title_a'] = 'Login'
     titles = get_all_title()
-    title_a = 'Login'
-    if session['logged_in'] == True:
-        title_a = 'Profile'
-
-    else:
-        title_a = 'Login'
-    return render_template('/html/main.html', titles=titles, title_a=title_a)
+    try:
+        if session['title_antificate'] == True:
+            session['title_a'] = 'Login'
+        else:
+            session['title_a'] = 'Profile'
+    except:
+        session['title_a'] = 'Login'
+    return render_template('/html/main.html', titles=titles, title_a=session['title_a'])
 
 @app.route("/login", methods={"GET", "POST"})
 def sing_in():
-    if session['logged_in'] == True:
-            return redirect(url_for('profile'))
-    
-    if request.method == 'POST':
 
+    if request.method == 'POST':
 
         login = request.form.get('login')
         password = request.form.get('password')
 
         data = get_all_users()
-        print(data)
 
         for i in data:
             if login == i[0] and password == i[1]:
                 user_name = login
                 session['logged_in'] = True
                 session['login_out'] = False
+                session['title_antificate'] = False
                 return redirect(url_for('profile', name=user_name))
 
             else:
@@ -66,7 +65,7 @@ def sing_up():
 @app.route("/profile", methods={"GET", "POST"})
 def profile():
     pj = get_all_pjs()
-    print(session["logged_in"])
+
     if session['logged_in'] == True and request.method == "POST":
         title = request.form.get("title")
         about = request.form.get("about")
@@ -99,6 +98,7 @@ def dell():
 def log_out():
     session['logged_in'] = False
     session['log_out'] = True
+    session['title_antificate'] == True
     return redirect(url_for('main'))
 
 #run sity
